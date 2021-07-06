@@ -1,25 +1,27 @@
 package com.zhihuishu.design.创造型模式.原型模式;
 
 /**
+ * 一、概述
+ * 用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象。
  * 二、适用性
- * 使用一个已经存在的类，而它的接口不符合你的需求。
- * 创建一个可以复用的类，该类可以与其他不相关的类或不可预见的类（即那些接口 可能不一定兼
- * 容的类）协同工作。
- * （仅适用于对象Adapter）使用一些已经存在的子类，但是不可能对每一个都进行 子类化以匹配它
- * 们的接口。对象适配器可以适配它的父类接口。
+ * 当一个系统应该独立于它的产品创建、构成和表示时。
+ * 当要实例化的类是在运行时刻指定时，例如，通过动态装载。
+ * 为了避免创建一个与产品类层次平行的工厂类层次时。
+ * 当一个类的实例只能有几个不同状态组合中的一种时。
+ * 建立相应数目的原型并克隆它们可能比每次用合适的状态手工实例化该类更方便一些。
  * 三、参与者
- * Target 定义Client使用的与特定领域相关的接口。
- * Client 与符合Target接口的对象协同。
- * Adaptee 定义一个已经存在的接口，这个接口需要适配。
- * Adapter 对Adaptee的接口与Target接口进行适配
+ * Prototype 声明一个克隆自身的接口。
+ * ConcretePrototype 实现一个克隆自身的操作。
+ * Client 让一个原型克隆自身从而创建一个新的对象。
  */
 public class Test {
     public static void main(String[] args) {
         try {
             Prototype prototype = new ConcretePrototype("Prototype");
-            Prototype Prototype2 = (Prototype)prototype.clone();
+            Prototype prototype2 = (Prototype)prototype.clone();
             System.out.println(prototype.getName());
-            System.out.println(Prototype2.getName());
+            System.out.println(prototype2.getName());
+            System.out.println(prototype == prototype2);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
